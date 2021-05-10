@@ -36,7 +36,7 @@ function setup() {
   UP_arrow.visible=false
   con.visible=false
 
-  Level1=createSprite(width-100,100,200,200)
+  Level1=createSprite(width-150,100,200,200)
   Level1.addImage(Level1_img)
   Level1.scale=0.4
   Level1.visible=false
