@@ -1,25 +1,25 @@
-var play,play_img
-var introduce
+var play
+var introduce,introduce_img
 var levelselector=1
 var GameMode=0
 var UP_arrow,UP_arrow_img,DOWN_arrow,DOWN_arrow_img
 var con,con_img
-var text1
 var Level1,Level1_img
 
 function preload(){
-  play_img = loadImage("PLAY.png")
+  introduce_img = loadImage("intro.png")
   UP_arrow_img = loadImage("up.png")
   DOWN_arrow_img = loadImage("down.png")
-  Level1_img = loadImage("level1.png")
 }
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
-  introduce = createSprite(width/2,0,width/2,width)
+  introduce = createSprite(width/2-90,height/2,width/2,width)
+  introduce.addImage(introduce_img)
+  introduce.scale=0.83
 
-  play = createSprite(width/2,500,200,80)
-  play.addImage(play_img)
+  play = createSprite(120,618,180,61)
+  play.visible=false
 
   UP_arrow = createSprite(width/2,440,40,40)
   UP_arrow.addImage(UP_arrow_img)
@@ -36,10 +36,7 @@ function setup() {
   UP_arrow.visible=false
   con.visible=false
 
-  Level1=createSprite(width-150,100,200,200)
-  Level1.addImage(Level1_img)
-  Level1.scale=0.4
-  Level1.visible=false
+
 
   text1="Mind Mapping"
   
@@ -111,13 +108,9 @@ function draw() {
     DOWN_arrow.destroy()
     con.destroy()
     Level1.visible=true
-    text1="⠀"
+    
     
   }
   console.log(GameMode)
-  textSize(50)
-  fill("black")
-  textFont("Fattern") 
-  text(text1,width/2-170,90)
 
 }
