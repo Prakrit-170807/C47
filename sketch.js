@@ -14,6 +14,7 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
+  
   introduce = createSprite(width/2-90,height/2,width/2,width)
   introduce.addImage(introduce_img)
   introduce.scale=0.83
