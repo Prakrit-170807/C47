@@ -1,117 +1,148 @@
-var play
-var introduce,introduce_img
-var levelselector=1
 var GameMode=0
-var UP_arrow,UP_arrow_img,DOWN_arrow,DOWN_arrow_img
-var con,con_img
-var Level1,Level1_img
+var start
+var introduce,introduce_img
+var levelselector0_5,levelselector0_5_img
+var input,Enter,PL_name
+var Levelsel,Levelsel_img
+var _1BUTTON,_2BUTTON,_3BUTTON,_4BUTTON,_5BUTTON,_6BUTTON
 
 function preload(){
   introduce_img = loadImage("intro.png")
   UP_arrow_img = loadImage("up.png")
   DOWN_arrow_img = loadImage("down.png")
+  levelselector0_5_img = loadImage("level0.5.png")
+  Levelsel_img = loadImage("Level sel.png")
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
-  
-  introduce = createSprite(width/2-90,height/2,width/2,width)
+  createCanvas(windowWidth-1,windowHeight-1);
+
+  introduce = createSprite(width/2-83,height/2)
   introduce.addImage(introduce_img)
-  introduce.scale=0.83
+  introduce.scale=0.71
+  start = createSprite(120,618,180,61)
+  start.visible=false
 
-  play = createSprite(120,618,180,61)
-  play.visible=false
+  levelselector0_5 = createSprite(width/2+30,height/2)
+  levelselector0_5.addImage(levelselector0_5_img)
+  levelselector0_5.scale=0.83
+  levelselector0_5.visible=false
 
-  UP_arrow = createSprite(width/2,440,40,40)
-  UP_arrow.addImage(UP_arrow_img)
-  UP_arrow.scale=0.5
-
-  DOWN_arrow = createSprite(width/2,560,40,40)
-  DOWN_arrow.addImage(DOWN_arrow_img)
-  DOWN_arrow.scale=0.5
-
-  con = createSprite(width/2+50,500,50,20)
-  con.shapeColor="black"
-
-  DOWN_arrow.visible=false
-  UP_arrow.visible=false
-  con.visible=false
-
-
-
-  text1="Mind Mapping"
-  
+  Levelsel = createSprite(width/2-38,height/2)
+  Levelsel.addImage(Levelsel_img)
+  Levelsel.scale = 0.76
+  Levelsel.visible=false
 }
 
 function draw() {
   background('#2E2E2E'); 
   drawSprites(); 
-  if(mousePressedOver(play)){
-    GameMode=1
+  if(keyWentDown("D")){
+    dev()
   }
-  if(GameMode==1){
-    play.destroy()
-    fill("black")
-    textSize(40)
-    // textFont("")
-    DOWN_arrow.visible=true
-    UP_arrow.visible=true
-    con.visible=true
-    text(levelselector,width/2-10,520)
-
-    if(mousePressedOver(UP_arrow)){
-      levelselector++
-    }
-    if(keyWentDown("UP_ARROW")){
-      levelselector++
-    }
+  if(mousePressedOver(start)){
+    GameMode=0.5
     
-    if(mousePressedOver(DOWN_arrow)){
-      levelselector--
-    }
-
-    if(keyWentDown("DOWN_ARROW")){
-      levelselector++
-    }
-    
-    if(mousePressedOver(con)){
-      if(levelselector==1){
-        GameMode=2
-      }
-      if(levelselector==2){
-        GameMode=3
-      }
-      if(levelselector==3){
-        GameMode=4
-      }
-      if(levelselector==4){
-        GameMode=5
-      }
-      if(levelselector==5){
-        GameMode=6
-      }
-      if(levelselector==6){
-        GameMode=7
-      }
-      if(levelselector==7){
-        GameMode=8
-      }
-      if(levelselector==8){
-        GameMode=9
-      }
-    }
   }
-
-  if(GameMode==2){
-    //background('#2E2E2E');
+  if(GameMode==0.5){
     introduce.destroy()
-    UP_arrow.destroy()
-    DOWN_arrow.destroy()
-    con.destroy()
-    Level1.visible=true
-    
+    levelselector0_5.visible=true
+
+    // input = createInput("What is your name?")
+    // input.position(15,350)
+    // input.size(240,41)
+    // // input.value(Player)
+    // Enter = createButton("Continue ▶")
+    // Enter.position(133,565)
+    // Enter.size(240,61)
+
+    // Enter.mousePressed(function(){
+    //   PL_name = input.value();
+    //   levelselector0_5.destroy()
+    //   input.hide()
+    //   Enter.hide()
+    //   GameMode="L1"
+    //   input.hide()
+    //   Enter.hide()
+    // })
+
+    // console.log(PL_name)  
+
+    if(keyWentDown(ENTER)){
+      GameMode="Lpick"
+    }
+  }
+  
+  if(GameMode=="Lpick"){
+    // levelselector0_5.destroy()
+    // input.hide()
+    // Enter.hide()
+    Levelsel.visible=true
+
+    _1BUTTON = createSprite(615,235,260,240)
+    _1BUTTON.visible=false
+    _2BUTTON = createSprite(942,235,260,240)
+    _2BUTTON.visible=false
+    _3BUTTON = createSprite(1269,235,260,240)
+    _3BUTTON.visible=false
+    _4BUTTON = createSprite(615,583,260,240)
+    _4BUTTON.visible=false
+    _5BUTTON = createSprite(942,583,260,240)
+    _5BUTTON.visible=false
+    _6BUTTON = createSprite(1269,583,260,240)
+    _6BUTTON.visible=false
+
+    if(mousePressedOver(_1BUTTON)){
+      GameMode="L1"
+      Levelsel.destroy()
+    }
+    if(mousePressedOver(_2BUTTON)){
+      GameMode="L2"
+      Levelsel.destroy()
+    }
+    if(mousePressedOver(_3BUTTON)){
+      GameMode="L3"
+      Levelsel.destroy()
+    }
+    if(mousePressedOver(_4BUTTON)){
+      GameMode="L4"
+      Levelsel.destroy()
+    }
+    if(mousePressedOver(_5BUTTON)){
+      GameMode="L5"
+      Levelsel.destroy()
+    }
+    if(mousePressedOver(_6BUTTON)){
+      GameMode="L6"
+      Levelsel.destroy()
+    }
+
+  }
+
+  if(GameMode=="L1"){
     
   }
-  console.log(GameMode)
+  if(GameMode=="L2"){
+    
+  }
+  if(GameMode=="L3"){
+    
+  }
+  if(GameMode=="L4"){
+    
+  }
+  if(GameMode=="L5"){
+    
+  }
+  if(GameMode=="L6"){
+    
+  }
 
-}
+
+
+  function dev (){
+    GameMode="Lpick"
+    fill("white")
+    text('BYPASS MODE',30,20) 
+  }  
+} 
