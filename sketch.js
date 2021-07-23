@@ -8,8 +8,6 @@ var _1BUTTON,_2BUTTON,_3BUTTON,_4BUTTON,_5BUTTON,_6BUTTON
 
 function preload(){
   introduce_img = loadImage("intro.png")
-  UP_arrow_img = loadImage("up.png")
-  DOWN_arrow_img = loadImage("down.png")
   levelselector0_5_img = loadImage("level0.5.png")
   Levelsel_img = loadImage("Level sel.png")
 }
