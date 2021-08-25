@@ -60,7 +60,7 @@ var col1L6_img, col2L6_img, col3L6_img, col4L6_img, col5L6_img, col6L6_img, col7
 //_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 var wrong, wrong_img, wrongsound, wrong_sound, right, right_img, rightsound, right_sound
-var soon_sound,pop_sound
+var soon_sound, pop_sound
 //All the sound and the checking variables
 
 //_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -68,7 +68,7 @@ var soon_sound,pop_sound
 var nxtlev = 0
 var checkerL1, checkerL1_img, checkerL2, checkerL3_img, checkerL4, checkerL4_img, checkerL5, checkerL5_img, checkerL6, checkerL6_img
 var nxtleveleL1, nxtlevelerL1_img, nxtlevelerL2, nxtlevelerL2_img, nxtlevelerL3, nxtlevelerL3_img, nxtlevelerL4, nxtlevelerL4_img, nxtlevelerL5, nxtlevelerL5_img, nxtlevelerL6, nxtlevelerL6_img
-var poslokL1=0, poslokL2=0, poslokL3=0, poslok4=0, poslokL5=0, poslokL6=0
+var poslokL1 = 0, poslokL2 = 0, poslokL3 = 0, poslok4 = 0, poslokL5 = 0, poslokL6 = 0
 //Conditionals variables all these variables are defined to add conditions in the "if" loop 
 
 function preload() {
@@ -604,7 +604,7 @@ function draw() {
   if (mousePressedOver(start)) {
     GameMode = "Lpick"
   }
-//For changing the GameMode to the level picker 
+  //For changing the GameMode to the level picker 
   if (GameMode == "Lpick") {
     //level picker GameMode
     Levelsel.visible = true
@@ -664,24 +664,34 @@ function draw() {
     }
     //Making all the colors visible so that they can be placed in the appropriate place in level 1 
 
-    if(col1L1.y==470 || col2L1.y==470 || col3L1.y==470 || col4L1.y==470 ){
-      poslokL1=1
+    if (col1L1.y == 470 || col2L1.y == 470 || col3L1.y == 470 || col4L1.y == 470) {
+      poslokL1 = 1
     }
     //This "if" loop prevents the color form being filled if all the boxes are already filled with alternate colors.
+    if (col1L1.y == 285 || col2L1.y == 285 || col3L1.y == 285 || col4L1.y == 285) {
+      poslokL1 = 2
+    }
+
+    if (col1L1.y == 680 && col2L1.y == 681 && col3L1.y == 680 && col4L1.y == 680) {
+      poslokL1 = 0
+      colchangerL1 = 0
+    }
 
     if (mousePressedOver(col1L1) && col1L1.x != 1365 && col1L1.y != 285) {
       col1L1.x = 1365
       col1L1.y = 285
       pop_sound.play()
-      if (colchangerL1 == 1) {
+      if (colchangerL1 == 1 && poslokL1 == 2) {
         col1L1.x = 1365
         col1L1.y = 470
-      }
-      if(poslokL1==1){
-        col1L1.x=485
-        col1L1.y=680
+        pop_sound.play()
       }
       colchangerL1 = 1
+
+    }
+    if (poslokL1 == 1 && col1L1.y == 470) {
+      col1L1.x = 485
+      col1L1.y = 680
     }
     //checking if a color is already filled in the box and placing the color depending on the condition
     if (mousePressedOver(col1L1) && col1L1.x == 1365 && col1L1.y == 285 && frameCount % 2 == 0) {
@@ -696,24 +706,25 @@ function draw() {
       col1L1.x = 485
       col1L1.y = 680
       pop_sound.play()
-      colchangerL1 = 0
-      poslokL1 = 0
+      colchangerL1 = 1
+      poslokL1 = 2
     }
     //placing the color back to the final position from the filling box in the right side bottom box
-
     if (mousePressedOver(col2L1) && col2L1.x != 1365 && col2L1.y != 285) {
       col2L1.x = 1365
       col2L1.y = 285
       pop_sound.play()
-      if (colchangerL1 == 1) {
+      if (colchangerL1 == 1 && poslokL1 == 2) {
         col2L1.x = 1365
         col2L1.y = 470
-      }
-      if(poslokL1==1){
-        col2L1.x=685
-        col2L1.y=680
+        pop_sound.play()
       }
       colchangerL1 = 1
+
+    }
+    if (poslokL1 == 1 && col2L1.y == 470) {
+      col2L1.x = 685
+      col2L1.y = 680
     }
     //checking if a color is already filled in the box and placing the color depending on the condition
     if (mousePressedOver(col2L1) && col2L1.x == 1365 && col2L1.y == 285 && frameCount % 2 == 0) {
@@ -728,8 +739,8 @@ function draw() {
       col2L1.x = 685
       col2L1.y = 680
       pop_sound.play()
-      colchangerL1 = 0
-      poslokL1 = 0
+      colchangerL1 = 1
+      poslokL1 = 2
     }
     //placing the color back to the final position from the filling box in the right side bottom box
 
@@ -737,31 +748,33 @@ function draw() {
       col3L1.x = 1365
       col3L1.y = 285
       pop_sound.play()
-      if (colchangerL1 == 1) {
+      if (colchangerL1 == 1 && poslokL1 == 2) {
         col3L1.x = 1365
         col3L1.y = 470
-      }
-      if(poslokL1==1){
-        col3L1.x=885
-        col3L1.y=680
+        pop_sound.play()
       }
       colchangerL1 = 1
+
+    }
+    if (poslokL1 == 1 && col3L1.y == 470) {
+      col3L1.x = 885
+      col3L1.y = 680
     }
     //checking if a color is already filled in the box and placing the color depending on the condition
     if (mousePressedOver(col3L1) && col3L1.x == 1365 && col3L1.y == 285 && frameCount % 2 == 0) {
       col3L1.x = 885
       col3L1.y = 680
       pop_sound.play()
-      colchangerL1 = 0
-      poslokL1 = 0
+      colchangerL1 =
+        poslokL1 = 0
     }
     //placing the color back to the final position from the filling box in the right side top box
     if (mousePressedOver(col3L1) && col3L1.x == 1365 && col3L1.y == 470 && frameCount % 2 == 0) {
       col3L1.x = 885
       col3L1.y = 680
       pop_sound.play()
-      colchangerL1 = 0
-      poslokL1 = 0
+      colchangerL1 = 1
+      poslokL1 = 2
     }
     //placing the color back to the final position from the filling box in the right side bottom box
 
@@ -769,15 +782,17 @@ function draw() {
       col4L1.x = 1365
       col4L1.y = 285
       pop_sound.play()
-      if (colchangerL1 == 1) {
+      if (colchangerL1 == 1 && poslokL1 == 2) {
         col4L1.x = 1365
         col4L1.y = 470
-      }
-      if(poslokL1==1){
-        col4L1.x=1085
-        col4L1.y=680
+        pop_sound.play()
       }
       colchangerL1 = 1
+
+    }
+    if (poslokL1 == 1 && col4L1.y == 470) {
+      col4L1.x = 1085
+      col4L1.y = 680
     }
     //checking if a color is already filled in the box and placing the color depending on the condition
     if (mousePressedOver(col4L1) && col4L1.x == 1365 && col4L1.y == 285 && frameCount % 2 == 0) {
@@ -792,8 +807,8 @@ function draw() {
       col4L1.x = 1085
       col4L1.y = 680
       pop_sound.play()
-      colchangerL1 = 0
-      poslokL1 = 0
+      colchangerL1 = 1
+      poslokL1 = 2
     }
     //placing the color back to the final position from the filling box in the right side bottom box
 
@@ -823,7 +838,7 @@ function draw() {
     if (colchangerL1 == 2) {
       right_sound.play()
       colchangerL1 = 0
-      
+
     }
     //playing a plesent tone as the answer is correct 
     if (colchangerL1 == 3) {
@@ -832,18 +847,18 @@ function draw() {
     }
     //playing a unplesent tone as the answer is wrong
 
-    if (colchangerL1 == 0  && checkerL1.visible==false) {
+    if (colchangerL1 == 0 && checkerL1.visible == false) {
       nxtlev = 1
-      poslokL1=2
+      poslokL1 = 5
     }
     //giving conditions to make the next level button only visiable if the check is right
 
-    if (col1L1.x == 1365 && col1L1.y == 285 || col1L1.x == 1365 && col1L1.y == 470 &&  nxtlev == 1 && poslokL1==2) {
-      if(col2L1.x == 1365 && col2L1.y == 285 || col2L1.x == 1365 && col2L1.y == 470 &&  nxtlev == 1 && poslokL1==2){
+    if (col1L1.x == 1365 && col1L1.y == 285 || col1L1.x == 1365 && col1L1.y == 470 && nxtlev == 1 && poslokL1 == 5) {
+      if (col2L1.x == 1365 && col2L1.y == 285 || col2L1.x == 1365 && col2L1.y == 470 && nxtlev == 1 && poslokL1 == 5) {
         nxtlevelerL1.visible = true
       }
-      else{ 
-        nxtlevelerL1.visible = false        
+      else {
+        nxtlevelerL1.visible = false
       }
     }
     else {
@@ -851,7 +866,7 @@ function draw() {
     }
     //Making the next leveler visiable and unvisible respectively from the result of the outcome above conditions
 
-    if (mousePressedOver(nxtlevelerL1)&&GameMode=="L1") {
+    if (mousePressedOver(nxtlevelerL1) && GameMode == "L1") {
       GameMode = "L2"
     }
     //moving to the next level in the next level button is pressed
@@ -867,8 +882,8 @@ function draw() {
     col4L1.destroy()
     checkerL1.destroy()
     nxtlevelerL1.destroy()
-    colchangerL1=0
-    nxtlev=0
+    colchangerL1 = 0
+    nxtlev = 0
 
     Level2Pre.visible = true
     if (frameCount % 120 == 0) {
@@ -884,171 +899,365 @@ function draw() {
       col6L2.visible = true
     }
 
+    if (col1L2.y == 530 || col2L2.y == 560 || col3L2.y == 530 || col4L2.y == 530 || col5L2.y == 530 || col6L2.y == 530) {
+      poslokL2 = 1
+    }
+    //This "if" loop prevents the color form being filled if all the boxes are already filled with alternate colors.
+    if (col1L2.y == 210 || col2L2.y == 210 || col3L2.y == 210 || col4L2.y == 210 || col5L2.y == 210 || col6L2.y == 210) {
+      poslokL2 = 2
+    }
+    if (col1L2.y == 370 || col2L2.y == 370 || col3L2.y == 370 || col4L2.y == 370 || col5L2.y == 370 || col6L2.y == 370) {
+      poslokL2 = 3
+    }
+    if (col1L1.y == 680 && col2L1.y == 681 && col3L1.y == 680 && col4L1.y == 680 && col5L2.y == 680 && col6L2.y == 680) {
+      poslokL2 = 0
+      colchangerL2 = 0
+    }
+
     if (mousePressedOver(col1L2) && col1L2.x != 1378 && col1L2.y != 210) {
       col1L2.x = 1378
       col1L2.y = 210
-      if (colchangerL2 == 1) {
+      pop_sound.play()
+      if (colchangerL2 == 1 || poslokL2 == 2) {
         col1L2.x = 1378
         col1L2.y = 370
+        pop_sound.play()
       }
       colchangerL2 = 1
+      if (colchangerL2 == 2 || poslokL2 == 3) {
+        col1L2.x = 1378
+        col1L2.y = 530
+      }
+      colchangerL2 = 2
+      if (poslokL2 == 1) {
+        col1L2.x = 285
+        col1L2.y = 680
+      }
     }
-    if (mousePressedOver(col1L2) && col1L2.x == 1378 && col1L2.y == 210 && frameCount % 10 == 0) {
+    //checking if a color is already filled in the box and placing the color depending on the condition
+    if (mousePressedOver(col1L2) && col1L2.x == 1378 && col1L2.y == 210 && frameCount % 2 == 0) {
       col1L2.x = 285
       col1L2.y = 680
+      pop_sound.play()
       colchangerL2 = 0
+      poslokL2 = 0
     }
-    if (mousePressedOver(col1L2) && col1L2.x == 1378 && col1L2.y == 370 && frameCount % 10 == 0) {
+    //placing the color back to the final position from the filling box in the right side top box
+    if (mousePressedOver(col1L2) && col1L2.x == 1378 && col1L2.y == 370 && frameCount % 2 == 0) {
       col1L2.x = 285
       col1L2.y = 680
-      colchangerL2 = 0
+      pop_sound.play()
+      colchangerL2 = 1
+      poslokL2 = 2
     }
+    //placing the color back to the final position from the filling box in the right side middle box
+    if (mousePressedOver(col1L2) && col2L2.x == 1378 && col2L2.y == 530 && frameCount % 2 == 0) {
+      col1L2.x = 285
+      col1L2.y = 680
+      pop_sound.play()
+      colchangerL2 = 2
+      poslokL2 = 3
+    }
+    //placing the color back to the final position from the filling box in the right side bottom box
 
     if (mousePressedOver(col2L2) && col2L2.x != 1378 && col2L2.y != 210) {
       col2L2.x = 1378
       col2L2.y = 210
-      if (colchangerL2 == 1) {
+      pop_sound.play()
+      if (colchangerL2 == 1 || poslokL2 == 2) {
         col2L2.x = 1378
         col2L2.y = 370
+        pop_sound.play()
       }
       colchangerL2 = 1
+      if (colchangerL2 == 2 || poslokL2 == 3) {
+        col2L2.x = 1378
+        col2L2.y = 530
+      }
+      colchangerL2 = 2
+      if (poslokL2 == 1) {
+        col2L2.x = 485
+        col2L2.y = 680
+      }
     }
-    if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 210 && frameCount % 10 == 0) {
+    //checking if a color is already filled in the box and placing the color depending on the condition
+    if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 210 && frameCount % 2 == 0) {
       col2L2.x = 485
       col2L2.y = 680
+      pop_sound.play()
       colchangerL2 = 0
+      poslokL2 = 0
     }
-    if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 370 && frameCount % 10 == 0) {
-      col2L1.x = 485
-      col2L1.y = 680
-      colchangerL2 = 0
+    //placing the color back to the final position from the filling box in the right side top box
+    if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 370 && frameCount % 2 == 0) {
+      col2L2.x = 485
+      col2L2.y = 680
+      pop_sound.play()
+      colchangerL2 = 1
+      poslokL2 = 2
     }
-
+    //placing the color back to the final position from the filling box in the right side middle box
+    if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 530 && frameCount % 2 == 0) {
+      col2L2.x = 485
+      col2L2.y = 680
+      pop_sound.play()
+      colchangerL2 = 2
+      poslokL2 = 3
+    }
+    //placing the color back to the final position from the filling box in the right side bottom box
 
     if (mousePressedOver(col3L2) && col3L2.x != 1378 && col3L2.y != 210) {
       col3L2.x = 1378
       col3L2.y = 210
-      if (colchangerL2 == 1) {
+      pop_sound.play()
+      if (colchangerL2 == 1 || poslokL2 == 2) {
         col3L2.x = 1378
         col3L2.y = 370
+        pop_sound.play()
       }
       colchangerL2 = 1
+      if (colchangerL2 == 2 || poslokL2 == 3) {
+        col3L2.x = 1378
+        col3L2.y = 530
+      }
+      colchangerL2 = 2
+      if (poslokL2 == 1) {
+        col3L2.x = 685
+        col3L2.y = 680
+      }
     }
-    if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 210 && frameCount % 10 == 0) {
+    //checking if a color is already filled in the box and placing the color depending on the condition
+    if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 210 && frameCount % 2 == 0) {
       col3L2.x = 685
       col3L2.y = 680
+      pop_sound.play()
       colchangerL2 = 0
+      poslokL2 = 0
     }
-    if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 370 && frameCount % 10 == 0) {
+    //placing the color back to the final position from the filling box in the right side top box
+    if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 370 && frameCount % 2 == 0) {
       col3L2.x = 685
       col3L2.y = 680
-      colchangerL2 = 0
+      pop_sound.play()
+      colchangerL2 = 1
+      poslokL2 = 2
     }
+    //placing the color back to the final position from the filling box in the right side middle box
+    if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 530 && frameCount % 2 == 0) {
+      col3L2.x = 685
+      col3L2.y = 680
+      pop_sound.play()
+      colchangerL2 = 2
+      poslokL2 = 3
+    }
+    //placing the color back to the final position from the filling box in the right side bottom box
 
     if (mousePressedOver(col4L2) && col4L2.x != 1378 && col4L2.y != 210) {
       col4L2.x = 1378
       col4L2.y = 210
-      if (colchangerL2 == 1) {
-        col4L2.x = 1365
+      pop_sound.play()
+      if (colchangerL2 == 1 || poslokL2 == 2) {
+        col4L2.x = 1378
         col4L2.y = 370
+        pop_sound.play()
       }
       colchangerL2 = 1
+      if (colchangerL2 == 2 || poslokL2 == 3) {
+        col4L2.x = 1378
+        col4L2.y = 530
+      }
+      colchangerL2 = 2
+      if (poslokL2 == 1) {
+        col4L2.x = 885
+        col4L2.y = 680
+      }
     }
-    if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 210 && frameCount % 10 == 0) {
+    //checking if a color is already filled in the box and placing the color depending on the condition
+    if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 210 && frameCount % 2 == 0) {
       col4L2.x = 885
       col4L2.y = 680
+      pop_sound.play()
       colchangerL2 = 0
+      poslokL2 = 0
     }
-    if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 370 && frameCount % 10 == 0) {
+    //placing the color back to the final position from the filling box in the right side top box
+    if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 370 && frameCount % 2 == 0) {
       col4L2.x = 885
       col4L2.y = 680
-      colchangerL2 = 0
+      pop_sound.play()
+      colchangerL2 = 1
+      poslokL2 = 2
     }
+    //placing the color back to the final position from the filling box in the right side middle box
+    if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 530 && frameCount % 2 == 0) {
+      col4L2.x = 885
+      col4L2.y = 680
+      pop_sound.play()
+      colchangerL2 = 2
+      poslokL2 = 3
+    }
+    //placing the color back to the final position from the filling box in the right side bottom box
 
     if (mousePressedOver(col5L2) && col5L2.x != 1378 && col5L2.y != 210) {
       col5L2.x = 1378
       col5L2.y = 210
-      if (colchangerL2 == 1) {
+      pop_sound.play()
+      if (colchangerL2 == 1 || poslokL2 == 2) {
         col5L2.x = 1378
         col5L2.y = 370
+        pop_sound.play()
       }
       colchangerL2 = 1
+      if (colchangerL2 == 2 || poslokL2 == 3) {
+        col5L2.x = 1378
+        col5L2.y = 530
+      }
+      colchangerL2 = 2
+      if (poslokL2 == 1) {
+        col5L2.x = 1085
+        col5L2.y = 680
+      }
     }
-    if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 210 && frameCount % 10 == 0) {
+    //checking if a color is already filled in the box and placing the color depending on the condition
+    if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 210 && frameCount % 2 == 0) {
       col5L2.x = 1085
       col5L2.y = 680
-      colchangerL1 = 0
-    }
-    if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 370 && frameCount % 10 == 0) {
-      col5L2.x = 1085
-      col5L2.y = 680
+      pop_sound.play()
       colchangerL2 = 0
+      poslokL2 = 0
     }
+    //placing the color back to the final position from the filling box in the right side top box
+    if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 370 && frameCount % 2 == 0) {
+      col5L2.x = 1085
+      col5L2.y = 680
+      pop_sound.play()
+      colchangerL2 = 1
+      poslokL2 = 2
+    }
+    //placing the color back to the final position from the filling box in the right side middle box
+    if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 530 && frameCount % 2 == 0) {
+      col5L2.x = 1085
+      col5L2.y = 680
+      pop_sound.play()
+      colchangerL2 = 2
+      poslokL2 = 3
+    }
+    //placing the color back to the final position from the filling box in the right side bottom box
 
     if (mousePressedOver(col6L2) && col6L2.x != 1378 && col6L2.y != 210) {
       col6L2.x = 1378
       col6L2.y = 210
-      if (colchangerL2 == 1) {
+      pop_sound.play()
+      if (colchangerL2 == 1 || poslokL2 == 2) {
         col6L2.x = 1378
         col6L2.y = 370
+        pop_sound.play()
       }
       colchangerL2 = 1
+      if (colchangerL2 == 2 || poslokL2 == 3) {
+        col6L2.x = 1378
+        col6L2.y = 530
+      }
+      colchangerL2 = 2
+      if (poslokL2 == 1) {
+        col6L2.x = 1285
+        col6L2.y = 680
+      }
     }
-    if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 285 && frameCount % 10 == 0) {
+    //checking if a color is already filled in the box and placing the color depending on the condition
+    if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 210 && frameCount % 2 == 0) {
       col6L2.x = 1285
       col6L2.y = 680
+      pop_sound.play()
       colchangerL2 = 0
+      poslokL2 = 0
     }
-    if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 370 && frameCount % 10 == 0) {
+    //placing the color back to the final position from the filling box in the right side top box
+    if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 370 && frameCount % 2 == 0) {
       col6L2.x = 1285
       col6L2.y = 680
-      colchangerL2 = 0
+      pop_sound.play()
+      colchangerL2 = 1
+      poslokL2 = 2
     }
+    //placing the color back to the final position from the filling box in the right side middle box
+    if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 530 && frameCount % 2 == 0) {
+      col6L2.x = 1285
+      col6L2.y = 680
+      pop_sound.play()
+      colchangerL2 = 2
+      poslokL2 = 3
+    }
+    //placing the color back to the final position from the filling box in the right side bottom box
 
-    if (colchangerL2 == 1) {
+
+    if (colchangerL2 == 2) {
       checkerL2.visible = true
     }
     else {
       checkerL2.visible = false
     }
+    //making the checking box visible
 
     if (mousePressedOver(checkerL2)) {
-      if (col1L2.x == 1378 && col1L2.y == 210 || col1L2.x == 1378 && col1L2.y == 370) {
-        if (col2L2.x == 1378 && col2L2.y == 210 || col2L2.x == 1378 && col2L2.y == 370) {
-          colchangerL2 = 2
+      if (col3L2.x == 1378 && col3L2.y == 210 || col3L2.x == 1378 && col3L2.y == 370 || col3L2.x == 1378 && col3L2.y == 530) {
+        if (col4L2.x == 1378 && col4L2.y == 210 || col4L2.x == 1378 && col4L2.y == 370 || col4L2.x == 1378 && col4L2.y == 530) {
+          if (col6L2.x == 1378 && col6L2.y == 210 || col6L2.x == 1378 && col6L2.y == 370 || col6L2.x == 1378 && col6L2.y == 530) {
+            colchangerL2 = 3
+          }
+          else {
+            colchangerL2 = 4
+          }
         }
         else {
-          colchangerL2 = 3
+          colchangerL2 = 4
         }
       }
       else {
-        colchangerL2 = 3
+        colchangerL2 = 4
       }
     }
+    //checking the filled color is right or woring and changing the condition respectively
 
-    if (colchangerL2 == 2) {
+    if (colchangerL2 == 3) {
       right_sound.play()
       colchangerL2 = 0
-      
+
     }
-    if (colchangerL2 == 3) {
+    //playing a plesent tone as the answer is correct 
+    if (colchangerL2 == 4) {
       wrong_sound.play()
       colchangerL2 = 0
     }
+    //playing a unplesent tone as the answer is wrong
 
-    if (colchangerL2 == 0 && mousePressedOver(checkerL2) && checkerL2.visible==false){
+    if (colchangerL2 == 0 && checkerL2.visible == false) {
       nxtlev = 1
+      poslokL2 = 5
     }
+    //giving conditions to make the next level button only visiable if the check is right
 
-    if (col1L2.x == 1378 && col1L2.y == 210 || col1L2.x == 1378 && col1L2.y == 370 && colchangerL2 == 0 && nxtlev == 1 && mousePressedOver(checkerL2) && checkerL2.visible==false) {
-      if(col2L2.x == 1378 && col2L2.y == 210 || col2L2.x == 1378 && col2L2.y == 370){
-        nxtlevelerL1.visible = true
+    if (col3L2.x == 1378 && col3L2.y == 210 || col3L2.x == 1378 && col3L2.y == 370 || col3L2.x == 1378 && col3L2.y == 530 && nxtlev == 1 && poslokL2 == 5) {
+      if (col4L2.x == 1378 && col4L2.y == 210 || col4L2.x == 1378 && col4L2.y == 370 || col4L2.x == 1378 && col4L2.y == 530 && nxtlev == 1 && poslokL2 == 5) {
+        if (col6L2.x == 1378 && col6L2.y == 210 || col6L2.x == 1378 && col6L2.y == 370 || col6L2.x == 1378 && col6L2.y == 530 && nxtlev == 1 && poslokL2 == 5) {
+          nxtlevelerL2.visible = true
+        }
+        else {
+          nxtlevelerL2.visible = false
+        }
+      }
+      else {
+        nxtlevelerL2.visible = false
       }
     }
+    else {
+      nxtlevelerL2.visible = false
+    }
+    //Making the next leveler visiable and unvisible respectively from the result of the outcome above conditions
 
   }
 
-// this part Of the game is comming Soon PLS wait...
+  // this part Of the game is comming Soon PLS wait...
 
   // if (GameMode == "L3") {
 
@@ -1085,7 +1294,7 @@ function draw() {
 }
 
 function dev() {
-  GameMode = "Lpick"
+  GameMode = "L2"
   fill("white")
   text('BYPASS MODE', 30, 20)
 }
