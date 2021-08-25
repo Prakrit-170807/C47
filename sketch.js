@@ -874,388 +874,388 @@ function draw() {
   }
 
 
-  if (GameMode == "L2") {
-    Level1.destroy
-    col1L1.destroy()
-    col2L1.destroy()
-    col3L1.destroy()
-    col4L1.destroy()
-    checkerL1.destroy()
-    nxtlevelerL1.destroy()
-    colchangerL1 = 0
-    nxtlev = 0
+  // if (GameMode == "L2") {
+  //   Level1.destroy
+  //   col1L1.destroy()
+  //   col2L1.destroy()
+  //   col3L1.destroy()
+  //   col4L1.destroy()
+  //   checkerL1.destroy()
+  //   nxtlevelerL1.destroy()
+  //   colchangerL1 = 0
+  //   nxtlev = 0
 
-    Level2Pre.visible = true
-    if (frameCount % 120 == 0) {
-      Level2Pre.destroy()
-      Level2.visible = true
-    }
-    if (Level2.visible == true) {
-      col1L2.visible = true
-      col2L2.visible = true
-      col3L2.visible = true
-      col4L2.visible = true
-      col5L2.visible = true
-      col6L2.visible = true
-    }
+  //   Level2Pre.visible = true
+  //   if (frameCount % 120 == 0) {
+  //     Level2Pre.destroy()
+  //     Level2.visible = true
+  //   }
+  //   if (Level2.visible == true) {
+  //     col1L2.visible = true
+  //     col2L2.visible = true
+  //     col3L2.visible = true
+  //     col4L2.visible = true
+  //     col5L2.visible = true
+  //     col6L2.visible = true
+  //   }
 
-    if (col1L2.y == 530 || col2L2.y == 560 || col3L2.y == 530 || col4L2.y == 530 || col5L2.y == 530 || col6L2.y == 530) {
-      poslokL2 = 1
-    }
-    //This "if" loop prevents the color form being filled if all the boxes are already filled with alternate colors.
-    if (col1L2.y == 210 || col2L2.y == 210 || col3L2.y == 210 || col4L2.y == 210 || col5L2.y == 210 || col6L2.y == 210) {
-      poslokL2 = 2
-    }
-    if (col1L2.y == 370 || col2L2.y == 370 || col3L2.y == 370 || col4L2.y == 370 || col5L2.y == 370 || col6L2.y == 370) {
-      poslokL2 = 3
-    }
-    if (col1L1.y == 680 && col2L1.y == 681 && col3L1.y == 680 && col4L1.y == 680 && col5L2.y == 680 && col6L2.y == 680) {
-      poslokL2 = 0
-      colchangerL2 = 0
-    }
+  //   if (col1L2.y == 530 || col2L2.y == 560 || col3L2.y == 530 || col4L2.y == 530 || col5L2.y == 530 || col6L2.y == 530) {
+  //     poslokL2 = 1
+  //   }
+  //   //This "if" loop prevents the color form being filled if all the boxes are already filled with alternate colors.
+  //   if (col1L2.y == 210 || col2L2.y == 210 || col3L2.y == 210 || col4L2.y == 210 || col5L2.y == 210 || col6L2.y == 210) {
+  //     poslokL2 = 2
+  //   }
+  //   if (col1L2.y == 370 || col2L2.y == 370 || col3L2.y == 370 || col4L2.y == 370 || col5L2.y == 370 || col6L2.y == 370) {
+  //     poslokL2 = 3
+  //   }
+  //   if (col1L1.y == 680 && col2L1.y == 681 && col3L1.y == 680 && col4L1.y == 680 && col5L2.y == 680 && col6L2.y == 680) {
+  //     poslokL2 = 0
+  //     colchangerL2 = 0
+  //   }
 
-    if (mousePressedOver(col1L2) && col1L2.x != 1378 && col1L2.y != 210) {
-      col1L2.x = 1378
-      col1L2.y = 210
-      pop_sound.play()
-      if (colchangerL2 == 1 || poslokL2 == 2) {
-        col1L2.x = 1378
-        col1L2.y = 370
-        pop_sound.play()
-      }
-      colchangerL2 = 1
-      if (colchangerL2 == 2 || poslokL2 == 3) {
-        col1L2.x = 1378
-        col1L2.y = 530
-      }
-      colchangerL2 = 2
-      if (poslokL2 == 1) {
-        col1L2.x = 285
-        col1L2.y = 680
-      }
-    }
-    //checking if a color is already filled in the box and placing the color depending on the condition
-    if (mousePressedOver(col1L2) && col1L2.x == 1378 && col1L2.y == 210 && frameCount % 2 == 0) {
-      col1L2.x = 285
-      col1L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 0
-      poslokL2 = 0
-    }
-    //placing the color back to the final position from the filling box in the right side top box
-    if (mousePressedOver(col1L2) && col1L2.x == 1378 && col1L2.y == 370 && frameCount % 2 == 0) {
-      col1L2.x = 285
-      col1L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 1
-      poslokL2 = 2
-    }
-    //placing the color back to the final position from the filling box in the right side middle box
-    if (mousePressedOver(col1L2) && col2L2.x == 1378 && col2L2.y == 530 && frameCount % 2 == 0) {
-      col1L2.x = 285
-      col1L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 2
-      poslokL2 = 3
-    }
-    //placing the color back to the final position from the filling box in the right side bottom box
+  //   if (mousePressedOver(col1L2) && col1L2.x != 1378 && col1L2.y != 210) {
+  //     col1L2.x = 1378
+  //     col1L2.y = 210
+  //     pop_sound.play()
+  //     if (colchangerL2 == 1 || poslokL2 == 2) {
+  //       col1L2.x = 1378
+  //       col1L2.y = 370
+  //       pop_sound.play()
+  //     }
+  //     colchangerL2 = 1
+  //     if (colchangerL2 == 2 || poslokL2 == 3) {
+  //       col1L2.x = 1378
+  //       col1L2.y = 530
+  //     }
+  //     colchangerL2 = 2
+  //     if (poslokL2 == 1) {
+  //       col1L2.x = 285
+  //       col1L2.y = 680
+  //     }
+  //   }
+  //   //checking if a color is already filled in the box and placing the color depending on the condition
+  //   if (mousePressedOver(col1L2) && col1L2.x == 1378 && col1L2.y == 210 && frameCount % 2 == 0) {
+  //     col1L2.x = 285
+  //     col1L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 0
+  //     poslokL2 = 0
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side top box
+  //   if (mousePressedOver(col1L2) && col1L2.x == 1378 && col1L2.y == 370 && frameCount % 2 == 0) {
+  //     col1L2.x = 285
+  //     col1L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 1
+  //     poslokL2 = 2
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side middle box
+  //   if (mousePressedOver(col1L2) && col2L2.x == 1378 && col2L2.y == 530 && frameCount % 2 == 0) {
+  //     col1L2.x = 285
+  //     col1L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 2
+  //     poslokL2 = 3
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side bottom box
 
-    if (mousePressedOver(col2L2) && col2L2.x != 1378 && col2L2.y != 210) {
-      col2L2.x = 1378
-      col2L2.y = 210
-      pop_sound.play()
-      if (colchangerL2 == 1 || poslokL2 == 2) {
-        col2L2.x = 1378
-        col2L2.y = 370
-        pop_sound.play()
-      }
-      colchangerL2 = 1
-      if (colchangerL2 == 2 || poslokL2 == 3) {
-        col2L2.x = 1378
-        col2L2.y = 530
-      }
-      colchangerL2 = 2
-      if (poslokL2 == 1) {
-        col2L2.x = 485
-        col2L2.y = 680
-      }
-    }
-    //checking if a color is already filled in the box and placing the color depending on the condition
-    if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 210 && frameCount % 2 == 0) {
-      col2L2.x = 485
-      col2L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 0
-      poslokL2 = 0
-    }
-    //placing the color back to the final position from the filling box in the right side top box
-    if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 370 && frameCount % 2 == 0) {
-      col2L2.x = 485
-      col2L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 1
-      poslokL2 = 2
-    }
-    //placing the color back to the final position from the filling box in the right side middle box
-    if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 530 && frameCount % 2 == 0) {
-      col2L2.x = 485
-      col2L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 2
-      poslokL2 = 3
-    }
-    //placing the color back to the final position from the filling box in the right side bottom box
+  //   if (mousePressedOver(col2L2) && col2L2.x != 1378 && col2L2.y != 210) {
+  //     col2L2.x = 1378
+  //     col2L2.y = 210
+  //     pop_sound.play()
+  //     if (colchangerL2 == 1 || poslokL2 == 2) {
+  //       col2L2.x = 1378
+  //       col2L2.y = 370
+  //       pop_sound.play()
+  //     }
+  //     colchangerL2 = 1
+  //     if (colchangerL2 == 2 || poslokL2 == 3) {
+  //       col2L2.x = 1378
+  //       col2L2.y = 530
+  //     }
+  //     colchangerL2 = 2
+  //     if (poslokL2 == 1) {
+  //       col2L2.x = 485
+  //       col2L2.y = 680
+  //     }
+  //   }
+  //   //checking if a color is already filled in the box and placing the color depending on the condition
+  //   if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 210 && frameCount % 2 == 0) {
+  //     col2L2.x = 485
+  //     col2L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 0
+  //     poslokL2 = 0
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side top box
+  //   if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 370 && frameCount % 2 == 0) {
+  //     col2L2.x = 485
+  //     col2L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 1
+  //     poslokL2 = 2
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side middle box
+  //   if (mousePressedOver(col2L2) && col2L2.x == 1378 && col2L2.y == 530 && frameCount % 2 == 0) {
+  //     col2L2.x = 485
+  //     col2L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 2
+  //     poslokL2 = 3
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side bottom box
 
-    if (mousePressedOver(col3L2) && col3L2.x != 1378 && col3L2.y != 210) {
-      col3L2.x = 1378
-      col3L2.y = 210
-      pop_sound.play()
-      if (colchangerL2 == 1 || poslokL2 == 2) {
-        col3L2.x = 1378
-        col3L2.y = 370
-        pop_sound.play()
-      }
-      colchangerL2 = 1
-      if (colchangerL2 == 2 || poslokL2 == 3) {
-        col3L2.x = 1378
-        col3L2.y = 530
-      }
-      colchangerL2 = 2
-      if (poslokL2 == 1) {
-        col3L2.x = 685
-        col3L2.y = 680
-      }
-    }
-    //checking if a color is already filled in the box and placing the color depending on the condition
-    if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 210 && frameCount % 2 == 0) {
-      col3L2.x = 685
-      col3L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 0
-      poslokL2 = 0
-    }
-    //placing the color back to the final position from the filling box in the right side top box
-    if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 370 && frameCount % 2 == 0) {
-      col3L2.x = 685
-      col3L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 1
-      poslokL2 = 2
-    }
-    //placing the color back to the final position from the filling box in the right side middle box
-    if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 530 && frameCount % 2 == 0) {
-      col3L2.x = 685
-      col3L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 2
-      poslokL2 = 3
-    }
-    //placing the color back to the final position from the filling box in the right side bottom box
+  //   if (mousePressedOver(col3L2) && col3L2.x != 1378 && col3L2.y != 210) {
+  //     col3L2.x = 1378
+  //     col3L2.y = 210
+  //     pop_sound.play()
+  //     if (colchangerL2 == 1 || poslokL2 == 2) {
+  //       col3L2.x = 1378
+  //       col3L2.y = 370
+  //       pop_sound.play()
+  //     }
+  //     colchangerL2 = 1
+  //     if (colchangerL2 == 2 || poslokL2 == 3) {
+  //       col3L2.x = 1378
+  //       col3L2.y = 530
+  //     }
+  //     colchangerL2 = 2
+  //     if (poslokL2 == 1) {
+  //       col3L2.x = 685
+  //       col3L2.y = 680
+  //     }
+  //   }
+  //   //checking if a color is already filled in the box and placing the color depending on the condition
+  //   if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 210 && frameCount % 2 == 0) {
+  //     col3L2.x = 685
+  //     col3L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 0
+  //     poslokL2 = 0
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side top box
+  //   if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 370 && frameCount % 2 == 0) {
+  //     col3L2.x = 685
+  //     col3L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 1
+  //     poslokL2 = 2
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side middle box
+  //   if (mousePressedOver(col3L2) && col3L2.x == 1378 && col3L2.y == 530 && frameCount % 2 == 0) {
+  //     col3L2.x = 685
+  //     col3L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 2
+  //     poslokL2 = 3
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side bottom box
 
-    if (mousePressedOver(col4L2) && col4L2.x != 1378 && col4L2.y != 210) {
-      col4L2.x = 1378
-      col4L2.y = 210
-      pop_sound.play()
-      if (colchangerL2 == 1 || poslokL2 == 2) {
-        col4L2.x = 1378
-        col4L2.y = 370
-        pop_sound.play()
-      }
-      colchangerL2 = 1
-      if (colchangerL2 == 2 || poslokL2 == 3) {
-        col4L2.x = 1378
-        col4L2.y = 530
-      }
-      colchangerL2 = 2
-      if (poslokL2 == 1) {
-        col4L2.x = 885
-        col4L2.y = 680
-      }
-    }
-    //checking if a color is already filled in the box and placing the color depending on the condition
-    if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 210 && frameCount % 2 == 0) {
-      col4L2.x = 885
-      col4L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 0
-      poslokL2 = 0
-    }
-    //placing the color back to the final position from the filling box in the right side top box
-    if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 370 && frameCount % 2 == 0) {
-      col4L2.x = 885
-      col4L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 1
-      poslokL2 = 2
-    }
-    //placing the color back to the final position from the filling box in the right side middle box
-    if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 530 && frameCount % 2 == 0) {
-      col4L2.x = 885
-      col4L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 2
-      poslokL2 = 3
-    }
-    //placing the color back to the final position from the filling box in the right side bottom box
+  //   if (mousePressedOver(col4L2) && col4L2.x != 1378 && col4L2.y != 210) {
+  //     col4L2.x = 1378
+  //     col4L2.y = 210
+  //     pop_sound.play()
+  //     if (colchangerL2 == 1 || poslokL2 == 2) {
+  //       col4L2.x = 1378
+  //       col4L2.y = 370
+  //       pop_sound.play()
+  //     }
+  //     colchangerL2 = 1
+  //     if (colchangerL2 == 2 || poslokL2 == 3) {
+  //       col4L2.x = 1378
+  //       col4L2.y = 530
+  //     }
+  //     colchangerL2 = 2
+  //     if (poslokL2 == 1) {
+  //       col4L2.x = 885
+  //       col4L2.y = 680
+  //     }
+  //   }
+  //   //checking if a color is already filled in the box and placing the color depending on the condition
+  //   if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 210 && frameCount % 2 == 0) {
+  //     col4L2.x = 885
+  //     col4L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 0
+  //     poslokL2 = 0
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side top box
+  //   if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 370 && frameCount % 2 == 0) {
+  //     col4L2.x = 885
+  //     col4L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 1
+  //     poslokL2 = 2
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side middle box
+  //   if (mousePressedOver(col4L2) && col4L2.x == 1378 && col4L2.y == 530 && frameCount % 2 == 0) {
+  //     col4L2.x = 885
+  //     col4L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 2
+  //     poslokL2 = 3
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side bottom box
 
-    if (mousePressedOver(col5L2) && col5L2.x != 1378 && col5L2.y != 210) {
-      col5L2.x = 1378
-      col5L2.y = 210
-      pop_sound.play()
-      if (colchangerL2 == 1 || poslokL2 == 2) {
-        col5L2.x = 1378
-        col5L2.y = 370
-        pop_sound.play()
-      }
-      colchangerL2 = 1
-      if (colchangerL2 == 2 || poslokL2 == 3) {
-        col5L2.x = 1378
-        col5L2.y = 530
-      }
-      colchangerL2 = 2
-      if (poslokL2 == 1) {
-        col5L2.x = 1085
-        col5L2.y = 680
-      }
-    }
-    //checking if a color is already filled in the box and placing the color depending on the condition
-    if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 210 && frameCount % 2 == 0) {
-      col5L2.x = 1085
-      col5L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 0
-      poslokL2 = 0
-    }
-    //placing the color back to the final position from the filling box in the right side top box
-    if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 370 && frameCount % 2 == 0) {
-      col5L2.x = 1085
-      col5L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 1
-      poslokL2 = 2
-    }
-    //placing the color back to the final position from the filling box in the right side middle box
-    if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 530 && frameCount % 2 == 0) {
-      col5L2.x = 1085
-      col5L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 2
-      poslokL2 = 3
-    }
-    //placing the color back to the final position from the filling box in the right side bottom box
+  //   if (mousePressedOver(col5L2) && col5L2.x != 1378 && col5L2.y != 210) {
+  //     col5L2.x = 1378
+  //     col5L2.y = 210
+  //     pop_sound.play()
+  //     if (colchangerL2 == 1 || poslokL2 == 2) {
+  //       col5L2.x = 1378
+  //       col5L2.y = 370
+  //       pop_sound.play()
+  //     }
+  //     colchangerL2 = 1
+  //     if (colchangerL2 == 2 || poslokL2 == 3) {
+  //       col5L2.x = 1378
+  //       col5L2.y = 530
+  //     }
+  //     colchangerL2 = 2
+  //     if (poslokL2 == 1) {
+  //       col5L2.x = 1085
+  //       col5L2.y = 680
+  //     }
+  //   }
+  //   //checking if a color is already filled in the box and placing the color depending on the condition
+  //   if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 210 && frameCount % 2 == 0) {
+  //     col5L2.x = 1085
+  //     col5L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 0
+  //     poslokL2 = 0
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side top box
+  //   if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 370 && frameCount % 2 == 0) {
+  //     col5L2.x = 1085
+  //     col5L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 1
+  //     poslokL2 = 2
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side middle box
+  //   if (mousePressedOver(col5L2) && col5L2.x == 1378 && col5L2.y == 530 && frameCount % 2 == 0) {
+  //     col5L2.x = 1085
+  //     col5L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 2
+  //     poslokL2 = 3
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side bottom box
 
-    if (mousePressedOver(col6L2) && col6L2.x != 1378 && col6L2.y != 210) {
-      col6L2.x = 1378
-      col6L2.y = 210
-      pop_sound.play()
-      if (colchangerL2 == 1 || poslokL2 == 2) {
-        col6L2.x = 1378
-        col6L2.y = 370
-        pop_sound.play()
-      }
-      colchangerL2 = 1
-      if (colchangerL2 == 2 || poslokL2 == 3) {
-        col6L2.x = 1378
-        col6L2.y = 530
-      }
-      colchangerL2 = 2
-      if (poslokL2 == 1) {
-        col6L2.x = 1285
-        col6L2.y = 680
-      }
-    }
-    //checking if a color is already filled in the box and placing the color depending on the condition
-    if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 210 && frameCount % 2 == 0) {
-      col6L2.x = 1285
-      col6L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 0
-      poslokL2 = 0
-    }
-    //placing the color back to the final position from the filling box in the right side top box
-    if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 370 && frameCount % 2 == 0) {
-      col6L2.x = 1285
-      col6L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 1
-      poslokL2 = 2
-    }
-    //placing the color back to the final position from the filling box in the right side middle box
-    if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 530 && frameCount % 2 == 0) {
-      col6L2.x = 1285
-      col6L2.y = 680
-      pop_sound.play()
-      colchangerL2 = 2
-      poslokL2 = 3
-    }
-    //placing the color back to the final position from the filling box in the right side bottom box
+  //   if (mousePressedOver(col6L2) && col6L2.x != 1378 && col6L2.y != 210) {
+  //     col6L2.x = 1378
+  //     col6L2.y = 210
+  //     pop_sound.play()
+  //     if (colchangerL2 == 1 || poslokL2 == 2) {
+  //       col6L2.x = 1378
+  //       col6L2.y = 370
+  //       pop_sound.play()
+  //     }
+  //     colchangerL2 = 1
+  //     if (colchangerL2 == 2 || poslokL2 == 3) {
+  //       col6L2.x = 1378
+  //       col6L2.y = 530
+  //     }
+  //     colchangerL2 = 2
+  //     if (poslokL2 == 1) {
+  //       col6L2.x = 1285
+  //       col6L2.y = 680
+  //     }
+  //   }
+  //   //checking if a color is already filled in the box and placing the color depending on the condition
+  //   if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 210 && frameCount % 2 == 0) {
+  //     col6L2.x = 1285
+  //     col6L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 0
+  //     poslokL2 = 0
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side top box
+  //   if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 370 && frameCount % 2 == 0) {
+  //     col6L2.x = 1285
+  //     col6L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 1
+  //     poslokL2 = 2
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side middle box
+  //   if (mousePressedOver(col6L2) && col6L2.x == 1378 && col6L2.y == 530 && frameCount % 2 == 0) {
+  //     col6L2.x = 1285
+  //     col6L2.y = 680
+  //     pop_sound.play()
+  //     colchangerL2 = 2
+  //     poslokL2 = 3
+  //   }
+  //   //placing the color back to the final position from the filling box in the right side bottom box
 
 
-    if (colchangerL2 == 2) {
-      checkerL2.visible = true
-    }
-    else {
-      checkerL2.visible = false
-    }
-    //making the checking box visible
+  //   if (colchangerL2 == 2) {
+  //     checkerL2.visible = true
+  //   }
+  //   else {
+  //     checkerL2.visible = false
+  //   }
+  //   //making the checking box visible
 
-    if (mousePressedOver(checkerL2)) {
-      if (col3L2.x == 1378 && col3L2.y == 210 || col3L2.x == 1378 && col3L2.y == 370 || col3L2.x == 1378 && col3L2.y == 530) {
-        if (col4L2.x == 1378 && col4L2.y == 210 || col4L2.x == 1378 && col4L2.y == 370 || col4L2.x == 1378 && col4L2.y == 530) {
-          if (col6L2.x == 1378 && col6L2.y == 210 || col6L2.x == 1378 && col6L2.y == 370 || col6L2.x == 1378 && col6L2.y == 530) {
-            colchangerL2 = 3
-          }
-          else {
-            colchangerL2 = 4
-          }
-        }
-        else {
-          colchangerL2 = 4
-        }
-      }
-      else {
-        colchangerL2 = 4
-      }
-    }
-    //checking the filled color is right or woring and changing the condition respectively
+  //   if (mousePressedOver(checkerL2)) {
+  //     if (col3L2.x == 1378 && col3L2.y == 210 || col3L2.x == 1378 && col3L2.y == 370 || col3L2.x == 1378 && col3L2.y == 530) {
+  //       if (col4L2.x == 1378 && col4L2.y == 210 || col4L2.x == 1378 && col4L2.y == 370 || col4L2.x == 1378 && col4L2.y == 530) {
+  //         if (col6L2.x == 1378 && col6L2.y == 210 || col6L2.x == 1378 && col6L2.y == 370 || col6L2.x == 1378 && col6L2.y == 530) {
+  //           colchangerL2 = 3
+  //         }
+  //         else {
+  //           colchangerL2 = 4
+  //         }
+  //       }
+  //       else {
+  //         colchangerL2 = 4
+  //       }
+  //     }
+  //     else {
+  //       colchangerL2 = 4
+  //     }
+  //   }
+  //   //checking the filled color is right or woring and changing the condition respectively
 
-    if (colchangerL2 == 3) {
-      right_sound.play()
-      colchangerL2 = 0
+  //   if (colchangerL2 == 3) {
+  //     right_sound.play()
+  //     colchangerL2 = 0
 
-    }
-    //playing a plesent tone as the answer is correct 
-    if (colchangerL2 == 4) {
-      wrong_sound.play()
-      colchangerL2 = 0
-    }
-    //playing a unplesent tone as the answer is wrong
+  //   }
+  //   //playing a plesent tone as the answer is correct 
+  //   if (colchangerL2 == 4) {
+  //     wrong_sound.play()
+  //     colchangerL2 = 0
+  //   }
+  //   //playing a unplesent tone as the answer is wrong
 
-    if (colchangerL2 == 0 && checkerL2.visible == false) {
-      nxtlev = 1
-      poslokL2 = 5
-    }
-    //giving conditions to make the next level button only visiable if the check is right
+  //   if (colchangerL2 == 0 && checkerL2.visible == false) {
+  //     nxtlev = 1
+  //     poslokL2 = 5
+  //   }
+  //   //giving conditions to make the next level button only visiable if the check is right
 
-    if (col3L2.x == 1378 && col3L2.y == 210 || col3L2.x == 1378 && col3L2.y == 370 || col3L2.x == 1378 && col3L2.y == 530 && nxtlev == 1 && poslokL2 == 5) {
-      if (col4L2.x == 1378 && col4L2.y == 210 || col4L2.x == 1378 && col4L2.y == 370 || col4L2.x == 1378 && col4L2.y == 530 && nxtlev == 1 && poslokL2 == 5) {
-        if (col6L2.x == 1378 && col6L2.y == 210 || col6L2.x == 1378 && col6L2.y == 370 || col6L2.x == 1378 && col6L2.y == 530 && nxtlev == 1 && poslokL2 == 5) {
-          nxtlevelerL2.visible = true
-        }
-        else {
-          nxtlevelerL2.visible = false
-        }
-      }
-      else {
-        nxtlevelerL2.visible = false
-      }
-    }
-    else {
-      nxtlevelerL2.visible = false
-    }
-    //Making the next leveler visiable and unvisible respectively from the result of the outcome above conditions
+  //   if (col3L2.x == 1378 && col3L2.y == 210 || col3L2.x == 1378 && col3L2.y == 370 || col3L2.x == 1378 && col3L2.y == 530 && nxtlev == 1 && poslokL2 == 5) {
+  //     if (col4L2.x == 1378 && col4L2.y == 210 || col4L2.x == 1378 && col4L2.y == 370 || col4L2.x == 1378 && col4L2.y == 530 && nxtlev == 1 && poslokL2 == 5) {
+  //       if (col6L2.x == 1378 && col6L2.y == 210 || col6L2.x == 1378 && col6L2.y == 370 || col6L2.x == 1378 && col6L2.y == 530 && nxtlev == 1 && poslokL2 == 5) {
+  //         nxtlevelerL2.visible = true
+  //       }
+  //       else {
+  //         nxtlevelerL2.visible = false
+  //       }
+  //     }
+  //     else {
+  //       nxtlevelerL2.visible = false
+  //     }
+  //   }
+  //   else {
+  //     nxtlevelerL2.visible = false
+  //   }
+  //   //Making the next leveler visiable and unvisible respectively from the result of the outcome above conditions
 
-  }
+  // }
 
   // this part Of the game is comming Soon PLS wait...
 
